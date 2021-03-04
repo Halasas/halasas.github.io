@@ -1,1 +1,107 @@
+body {
+    background-color: #EBEFF0;
+    color: #858b91;
+}
 
+header {
+    display: flex;
+    align-items: center;
+    height: 0%;
+}
+header h2 {
+    min-width: 33%;
+    margin: auto 1em auto 0;
+}
+header button {
+    font-weight: 600;
+    min-width: 33%;
+    margin: 0;
+    padding: 1em 1em;    
+    text-overflow: clip;
+    background-color: #CCD4DC;
+    color: #858b91;
+    border-radius: 0.5em;
+    border: 0;
+    outline: none;
+}
+
+header button:active{
+    background-color: #adb4bb;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3% 0%;
+}
+
+.infoblock {
+    height: 15em;
+    width: 48%;
+    min-width: 280px;
+}
+
+@media (max-width: 740px) {
+    .infoblock {
+        width: 100%;
+        min-width: 280px;
+        height: 15em;
+    }
+}
+
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main h1{
+    width: 100%;
+    align-self: flex-start;
+    margin: 0;
+    font-size: 2em;
+}
+
+.main img {
+    width: auto;
+    height: 60%;
+}
+
+.main span {
+    font-size: 4em;
+}
+
+.details {
+    padding: 0;
+}
+
+.details ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.details ul li {
+    background-color: #858b91;
+    color: #CCD4DC;
+    height: 15%;
+    padding: 0 1em;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.details ul li h4 {
+    display: inline;
+    margin: 0;
+
+}
+.details ul li span {
+    float: right;
+}
