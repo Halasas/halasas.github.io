@@ -1,1 +1,1 @@
-halasas.github.io
+https://halasas.github.io/
