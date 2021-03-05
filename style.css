@@ -151,6 +151,7 @@ header button img {
 .additional div {
     display: flex;
     justify-content: space-between;
+    width: 20%;
 }
 
 .additional div span{
