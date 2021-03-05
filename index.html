@@ -8,7 +8,7 @@
     <body>
         <header>
             <h2>Погода здесь</h2>
-            <button type="button">Обновить геолокацию</button>
+            <button type="button"><span>Обновить геолокацию</span><img src="Update.svg"></button>
         </header>
         <section name="mainblock" class="container">
             <div name="information" class="infoblock main">
@@ -26,5 +26,37 @@
                 </ul>
             </div>
         </section>
+        <section name="favorite_header"> 
+            <div class="favorite">
+                <h2>Избранное</h2>
+                <div>
+                    <input placeholder="Добавить новый город">
+                    <button class="round-button">+</button>
+                </div>
+            </div>
+        </section>
+        <section name="favorite_block" class="favorite-list"> 
+            <ul>
+                <li>
+                    <div class="additional infoline">
+                        <h2>Moscow</h2>
+                        <div>
+                            <img src="Weather.svg">
+                            <span>8&#176C</span>
+                        </div>
+                        <button class="round-button">x</button>
+                    </div>
+                    <div name="detailed_information" class="infoblock details">
+                        <ul>
+                            <li><h4>Ветер</h4><span>Moderate breeze, 6.0m/s, North-northwest</span></li>
+                            <li><h4>Облачность</h4><span>Broken clouds</span></li>
+                            <li><h4>Давление</h4><span>1013hpa</span></li>
+                            <li><h4>Влажность</h4><span>52%</span></li>
+                            <li><h4>Координаты</h4><span>[59.88, 30.42]</span></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        <section >
     </body>
 </html>
