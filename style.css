@@ -212,7 +212,7 @@ input::placeholder {
     }
 
     .details {
-        font-size: 85%;
+        font-size: 75%;
     }
     .favorite div {
         width: 100%;
@@ -238,14 +238,10 @@ input::placeholder {
     }
     
     .main h1 {
-        font-size: 3em;
+        font-size: 2em;
     }
 
     .main img {
         height: 50%;
-    }
-
-    .main span {
-        font-size: 3em;
     }
 }
