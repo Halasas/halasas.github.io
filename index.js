@@ -64,6 +64,20 @@ function processError(error, weatherContainer) {
     weatherContainer.querySelector("#loading-text").innerHTML = `Something wrong... Uh... ${error}`
 }
 
+function toggleFavoriteErrorDisplay(mode) {
+    if(mode == "show") {
+        document.querySelector("#error-display").classList.remove("hidden")
+    }
+    else if (mode == "hide") {
+        document.querySelector("#error-display").classList.add("hidden")
+    }
+}
+
+document.querySelector("#error-display button").addEventListener("click", evt => {
+    toggleFavoriteErrorDisplay("hide")
+})
+
+
 function updateWeatherByGeoloc(weatherContainer) {
     navigator.geolocation.getCurrentPosition(
         position => {
@@ -118,10 +132,12 @@ function addFavorite(name) {
     data => { 
         processWeather(data, favoriteItem)
         console.log(name)
+        toggleFavoriteErrorDisplay("hide")
     },
     error => {
         favoriteItem.remove()
         removeFromLocalStorage(name)
+        toggleFavoriteErrorDisplay("show")
     })
 }
 
@@ -145,6 +161,6 @@ function onStart() {
         addFavorite(name)
     })
     console.log(favoriteNames)
-
+    document.querySelector("#error-display").classList.add("hidden")
 }
 onStart()

@@ -185,6 +185,15 @@ input::placeholder {
     font-size: 150%;
     border: none;
     border-radius: 50%;
+    outline: none;
+}
+
+.round-button:hover {
+    background-color: #768697;
+}
+
+.round-button:active {
+    background-color: #b5bec9;
 }
 
 .favorite-list ul{
@@ -227,12 +236,27 @@ input::placeholder {
     animation: spin 1s linear infinite;
 }
 
-.hidden {
-    display: none;
-}
-
 img {
     filter: contrast(85%);
+}
+
+.error-display {
+    background-color: #eb7f7f;   
+    color: white; 
+    border-radius: 1em;
+    margin: 1em 0em;
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.error-display b {
+    width: 80%;
+}
+
+.hidden {
+    display: none;
 }
 
 @media (max-width: 750px) {
