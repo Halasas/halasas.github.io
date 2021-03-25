@@ -64,7 +64,6 @@ header button img {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
 }
 
 .main h2{
@@ -76,11 +75,11 @@ header button img {
 
 .main img {
     width: auto;
-    height: 60%;
+    height: 80%;
 }
 
 .main span {
-    font-size: 4em;
+    font-size: 5.5em;
 }
 
 .details {
@@ -230,6 +229,10 @@ input::placeholder {
 
 .hidden {
     display: none;
+}
+
+img {
+    filter: contrast(85%);
 }
 
 @media (max-width: 750px) {

@@ -1,4 +1,5 @@
 let APIKey="6759acba74d5a9f3fed19e25654c7484"
+let favoriteNames = []
 
 function toggleLoading(element, mode) {
     let loading=element.querySelector("#loading")
@@ -22,7 +23,6 @@ function getRequestURLbyCityname(name) {
 }
 
 function getRequestURLbyCoords(position) {
-    console.log(position)
     let latitude = position.coords.latitude
     let longitude = position.coords.longitude
     return `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${APIKey}&units=metric`
@@ -48,7 +48,7 @@ function requestWeather(requestUrl, processWeather, processError) {
 
 function processWeather(data, weatherContainer) {
     weatherContainer.querySelector("#name").innerHTML = data.name 
-    weatherContainer.querySelector("#weather-icon").src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`
+    weatherContainer.querySelector("#weather-icon").src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`
     weatherContainer.querySelector("#temperature").innerHTML = Math.round(data.main.temp) + "°C"
     
     weatherContainer.querySelector("#wind").innerHTML = `${data.wind.deg}deg ${data.wind.speed} m/s`
@@ -75,32 +75,74 @@ function updateWeatherByGeoloc(weatherContainer) {
             error => {
                 processError(error, weatherContainer)
             })
-        return true;
     },
     error => {
-        updateWeatherByName("Why", weatherContainer)
-        return false;
+        requestWeather(getRequestURLbyCityname("saint petersburg"), 
+        data => { 
+            processWeather(data, weatherContainer)
+        },
+        error => {
+            processError(error, weatherContainer)
+        })
     })
 }
 
 document.querySelector("#geoloc-button").addEventListener("click", 
     evt => {updateWeatherByGeoloc(document.querySelector("#main-block"))})
 
-function updateWeatherByName(name, weatherContainer) {
+
+function addToLocalStorage(name) {
+    favoriteNames.push(name)
+    localStorage.setItem("favoriteNames", JSON.stringify(favoriteNames))
+}
+
+function removeFromLocalStorage(name) {
+    favoriteNames.splice(favoriteNames.indexOf(name), 1)
+    localStorage.setItem("favoriteNames", JSON.stringify(favoriteNames))
+}
+
+function addFavorite(name) {
+    if(name == "") {
+        return
+    }
+    let favoriteItem = favoriteTemplate.cloneNode(true).content.querySelector("#favorite-item")
+    toggleLoading(favoriteItem, "hide")
+    favoriteItem.querySelector("#delete-button").addEventListener("click",
+        evt => {
+            favoriteItem.remove()
+            removeFromLocalStorage(name)
+        })
+    localStorage
+    favoriteList.append(favoriteItem)
     requestWeather(getRequestURLbyCityname(name), 
     data => { 
-        processWeather(data, weatherContainer)
-        return true;
+        processWeather(data, favoriteItem)
+        console.log(name)
     },
     error => {
-        processError(error, weatherContainer)
-        return false;
+        favoriteItem.remove()
+        removeFromLocalStorage(name)
     })
 }
 
-function start() {
-    let main = document.querySelector("#main-block")
+document.querySelector("#favorite-form").addEventListener("submit", 
+    evt => {
+        evt.preventDefault()
+        let input = document.querySelector("#favorite-form input")
+        addFavorite(input.value)
+        addToLocalStorage(input.value)
+        input.value = ""
+    })
+
+function onStart() {
+    let main = mainBlock
     toggleLoading(main, "hide")
     updateWeatherByGeoloc(main)
+    favoriteNames = JSON.parse(localStorage.getItem("favoriteNames"))
+    favoriteNames.forEach(name => {
+        addFavorite(name)
+    })
+    console.log(favoriteNames)
+
 }
-start()
+onStart()
