@@ -138,7 +138,9 @@ function onStart() {
     let main = mainBlock
     toggleLoading(main, "hide")
     updateWeatherByGeoloc(main)
-    favoriteNames = JSON.parse(localStorage.getItem("favoriteNames"))
+    if(localStorage.getItem("favoriteNames") != null) {
+        favoriteNames = JSON.parse(localStorage.getItem("favoriteNames"))
+    }
     favoriteNames.forEach(name => {
         addFavorite(name)
     })
