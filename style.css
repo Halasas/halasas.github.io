@@ -1,4 +1,5 @@
 body {
+    font-family: sans-serif;
     color: #858b91;
     margin: 20px;
 }
@@ -8,7 +9,7 @@ header {
     align-items: center;
     height: 0%;
 }
-header h2 {
+header h1 {
     min-width: 33%;
     margin: auto 1em auto 0;
 }
@@ -66,7 +67,7 @@ header button img {
     justify-content: space-between;
 }
 
-.main h1{
+.main h2{
     width: 100%;
     align-self: flex-start;
     margin: 0;
@@ -100,20 +101,18 @@ header button img {
     background-color: #adb4bb;
     color: #e1e7e9;
     height: 15%;
-    padding: 0 1em;
+    padding: 0 0.5em;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-align: end;
 }
-.details ul li h4 {
+.details ul li b {
     color: white;
     display: inline;
     margin: 0;
 
-}
-.details ul li span {
-    float: right;
 }
 
 .favorite {
@@ -128,7 +127,7 @@ header button img {
     font-size: 2em;
 }
 
-.favorite div {
+.favorite form {
     display: flex;
     justify-content: space-between;
     width: 45%;
@@ -159,7 +158,7 @@ header button img {
 }
 
 .additional div img{
-    height: 2em;
+    height: 2.5em;
     width: auto;
 }
 
@@ -202,7 +201,38 @@ input::placeholder {
     padding: 0;
 }
 
-@media (max-width: 740px) {
+
+
+@keyframes spin { 100% { transform: rotate(-360deg) } }
+
+.loading {
+    width: 100%;
+    height: 18em;
+    padding: 2em;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.loading b {
+    margin: 1em;
+    font-size: 2em;
+    display: block;
+    text-align: center;
+}
+
+.loading img {
+    height: 5em;
+    width: auto;
+    animation: spin 1s linear infinite;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 750px) {
     .infoblock {
         width: 100%;
     }
@@ -211,33 +241,33 @@ input::placeholder {
         width: 100%;
     }
 
-    .details {
-        font-size: 75%;
-    }
-    .favorite div {
+    .favorite form {
         width: 100%;
     }
-}
 
-
-
-@media (max-width: 400px) {
     header {
         justify-content: space-between;
     }
+    
     header button img {
         display: inline;
     }
+
     header button  {
         min-width: 10%;
         padding: 1%;
         margin: 0;
     }
+    
     header button span {
         display: none;
     }
     
-    .main h1 {
+    header h1  {
+        font-size: 1.5em;
+    }
+
+    .main h2 {
         font-size: 2em;
     }
 
