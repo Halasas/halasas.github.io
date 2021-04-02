@@ -1,0 +1,28 @@
+{
+  "name": "weather_server",
+  "version": "1.0.0",
+  "description": "Backend for weather site with OpenWeather API support",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Halasas/halasas.github.io.git"
+  },
+  "author": "Ilya Lebedev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Halasas/halasas.github.io/issues"
+  },
+  "homepage": "https://github.com/Halasas/halasas.github.io#readme"
+}
